@@ -1,0 +1,145 @@
+[
+  {
+    "id": 1,
+    "title": "Shampoo Elvive Hidra Hialurónico x 400 ml",
+    "price": 1000,
+    "category": "cuidadoPersonal",
+    "thumbnail": [
+      "https://farmacityar.vteximg.com.br/arquivos/ids/228352-1000-1000/221679_shampoo-elvive-hidra-hialuronico-x-400-ml_imagen-1.jpg?v=637986815594830000"
+    ],
+    "stock": 5,
+    "description": "El shampoo Hidra rellenador, con Ácido Hialurónico y efecto Anti-Sal°, recarga la fibra con una hidratación intensa para una transformación instantánea y un cabello suave, ligero y brillante. Elvive Hidra Hialurónico para cabello deshidratado.",
+    "status": true,
+    "code": "EP001"
+  },
+  {
+    "id": 2,
+    "title": "Shampoo Elvive Reparación Total Extreme x 400 ml",
+    "price": 1000,
+    "category": "cuidadoPersonal",
+    "thumbnail": [
+      "https://farmacityar.vteximg.com.br/arquivos/ids/228448-600-600/143506_shampoo-reparacion-total-extreme-x-400-ml_imagen-1.jpg?v=637987726277500000"
+    ],
+    "stock": 6,
+    "description": "¿Cabello muy dañado? Nuestro Shampoo Reconstructor, con un concentrado reparador con KERATINxs, LAK 1000 y con efecto Anti-Sal°, transforma el cabello muy dañado. Elvive Reparación Total Extreme para cabello muy dañado.",
+    "status": true,
+    "code": "EP002"
+  },
+  {
+    "id": 3,
+    "title": "Shampoo Dove Regeneración Extrema x 200 ml",
+    "price": 700,
+    "category": "cuidadoPersonal",
+    "thumbnail": [
+      "https://farmacityar.vteximg.com.br/arquivos/ids/239142-600-600/215075_shampoo-dove-regeneracion-extrema-x-200-ml___imagen-1.jpg?v=638149981472000000"
+    ],
+    "stock": 4,
+    "description": "Descubre el shampoo Dove Regeneración Extrema un concentrado poderoso de ingredientes activos regeneradores que nutren profundamente la fibra capilar activando el proceso de regeneración interna del cabello.",
+    "status": true,
+    "code": "EP003"
+  },
+  {
+    "id": "4",
+    "title": "Eucerin Urearepair plus 10% espuma para pies 150 ml",
+    "price": 10000,
+    "category": "dermo",
+    "thumbnail": [
+      "https://farmaonline.vtexassets.com/arquivos/ids/358123-1200-1200?v=637898730954530000&width=1200&height=1200&aspect=true"
+    ],
+    "stock": 3,
+    "description": "Enriquecida con Urea, Ceramida y otros factores naturales de hidratación (NMF), se ha demostrado clínicamente que esta fórmula aporta una hidratación inmediata e intensiva, con resultados duraderos incluso durante 48 horas. Previene una mayor pérdida de hidratación, fortalece la barrera lipídica natural de la piel, suaviza la piel extremadamente seca y cura las grietas de los talones.",
+    "status": true,
+    "code": "EP004"
+  },
+  {
+    "id": 5,
+    "title": "Avene Intense protect spf 50+ 150 ml",
+    "price": 9300,
+    "category": "dermo",
+    "thumbnail": [
+      "https://farmaonline.vtexassets.com/arquivos/ids/417930-1200-1200?v=638089717176300000&width=1200&height=1200&aspect=true"
+    ],
+    "stock": 12,
+    "description": "Protector solar spf 50 de ultra-amplio espectro que cumple con los requisitos más exigentes , incluso para las pieles más vulnerables y en condiciones de luz solar más intensas, a la vez que minimiza nuestro impacto en el medioambiente.",
+    "status": true,
+    "code": "EP005"
+  },
+  {
+    "id": 6,
+    "title": "La Roche Posay Lipikar surgras pan dermatológico 150gr",
+    "price": 6500,
+    "category": "dermo",
+    "thumbnail": [
+      "https://farmaonline.vtexassets.com/arquivos/ids/386976-1200-1200?v=637998013346630000&width=1200&height=1200&aspect=true"
+    ],
+    "stock": 4,
+    "description": "Lipikar Surgras de La Roche-Posay es una barra de limpieza enriquecida con lípidos que mantiene la barrera de la piel. Limpia y protege la piel sensible y seca de toda la familia: bebés, niños, adultos.  Su fórmula contiene Niacinamida y manteca de Karité para ayudar a restaurar la barrea cutánea. Deja la piel limpia, humectada y no irrita. Consejo de uso: Aplicar diariamente en la ducha o baño sobre la piel húmeda. Masajear suavemente y enjuagar. Evitar el contorno de los ojos.",
+    "status": true,
+    "code": "EP006"
+  },
+  {
+    "id": 7,
+    "title": "Bebefantitos Set gift box hola bebé",
+    "price": 4900,
+    "category": "bebes",
+    "thumbnail": [
+      "https://farmaonline.vtexassets.com/arquivos/ids/383371-1600-1600?v=637992301492900000&width=1600&height=1600&aspect=true"
+    ],
+    "stock": 2,
+    "description": "Contiene:   -Mamadera decorada -Chupete anatomico -Prendedor -Mordillo -Babero",
+    "status": true,
+    "code": "EP007"
+  },
+  {
+    "id": 8,
+    "title": "Nuk Mamadera nature sense celeste 150ml",
+    "price": 5000,
+    "category": "bebes",
+    "thumbnail": [
+      "https://farmaonline.vtexassets.com/arquivos/ids/383692-1200-1200?v=637992731135100000&width=1200&height=1200&aspect=true"
+    ],
+    "stock": 7,
+    "description": "- Varios orificios pequeños toman como ejemplo los conductos mamarios y aseguran un flujo suave y natural. Apoyo labial ancho y flexible con punta de tetina extra-suave similar al pezón materno. Innovadora Válvula Anti-Cólicos que ayuda a prevenir la ingesta de aire. Botella de polipropileno (PP) de alta calidad, resistente y libre de BPA. Con tetina de 0-6 meses, flujo M (6 pequeños orificios para fórmula). Capacidad 150 ml",
+    "status": true,
+    "code": "EP008"
+  },
+  {
+    "id": 9,
+    "title": "Chicco Chupete physio light boy 6 a 16 meses 2 unidades",
+    "price": 3800,
+    "category": "bebes",
+    "thumbnail": [
+      "https://farmaonline.vtexassets.com/arquivos/ids/382941-1200-1200?v=637992278085170000&width=1200&height=1200&aspect=true"
+    ],
+    "stock": 9,
+    "description": "Physio Light es el chupete extra ligero de Chicco con grandes orificios de aireación para evitar la acumulación de saliva del bebé.  Así su delicada piel no se irrita, y el chupete es tan ligero que no sentirá ninguna incomodidad. Con tetina higiénica de silicona no se deforma y su acabado les resulta muy suave y agradable. Todos los chupetes Chicco son  PhysioForma: desarrollados para ayudar a colocar la lengua hacia adelante y favorecer así la respiración fisiológica del bebé.",
+    "status": true,
+    "code": "EP009"
+  },
+  {
+    "id": 10,
+    "title": "Fuyi Espirales country",
+    "price": 300,
+    "category": "hogar",
+    "thumbnail": [
+      "https://farmaonline.vtexassets.com/arquivos/ids/387007-1200-1200?v=637998014796600000&width=1200&height=1200&aspect=true"
+    ],
+    "stock": 16,
+    "description": "Fuyi espirales ofrece protección efectiva contra mosquitos durante 8 horas.",
+    "status": true,
+    "code": "EP010"
+  },
+  {
+    "id": 11,
+    "title": "Raid Insecticida en aerosol mata moscas y mosquitos 370 ml",
+    "price": 900,
+    "category": "hogar",
+    "thumbnail": [
+      "https://farmaonline.vtexassets.com/arquivos/ids/337711-1600-1600?v=637834956068200000&width=1600&height=1600&aspect=true"
+    ],
+    "stock": 17,
+    "description": "Aerosol mata moscas y mosquitos 370 ml",
+    "status": true,
+    "code": "EP011"
+  }
+]
