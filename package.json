@@ -1,11 +1,12 @@
 {
   "type": "module",
   "scripts": {
-		"start": "node --watch src/app.js",
-		"dev": "nodemon src/app.js"
-	},
+    "start": "node --watch src/app.js",
+    "dev": "nodemon src/app.js"
+  },
   "dependencies": {
     "express": "^4.18.2",
-    "handlebars": "^4.7.8"
+    "handlebars": "^4.7.8",
+    "socket.io": "^4.7.2"
   }
 }

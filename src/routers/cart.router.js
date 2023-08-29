@@ -1,58 +1,65 @@
 import { Router } from 'express'
 import CartManager from '../cartManager.js'
 
-// Creación de un enrutador
 const cartsRouter = Router()
-// Crear una instancia del gestor de carritos
 const cartManager = new CartManager('./data/carts.json')
 
-// Definición de la ruta para crear un nuevo carrito
+const ERROR_CODES = {
+    'code_already_exists': 409,
+    
+}
+
 cartsRouter.post('/', async (req, res) => {
-    // Llamar al método para crear un carrito
-    const result = await cartManager.createCart()
+   
+    try{
+        const result = await cartManager.createCart()
+        res.status(201).json({ status: 'success', payload: result })
 
-    if (typeof result == 'string') {
-        // Manejar errores y devolver una respuesta JSON con el código de error
-        const error = result.split(' ')
-        const errorMessage = error.slice(1).join(' ')
+    } catch (error) {
+        if (error.code in ERROR_CODES) {
+            res.status(ERROR_CODES[error.code].json({ error: error.message}))
 
-        return res.status(parseInt(error[0].slice(1,4))).json({ error: errorMessage })
+        } else {
+            res.status(500).json({ error: 'Internal Server Error' })
+        }
     }
-    // Si la creación es exitosa, responder con un código de estado 201 y el resultado
-    res.status(201).json({ status: 'success', payload: result })
 })
 
-// Definición de la ruta para obtener productos de un carrito específico
+
 cartsRouter.get('/:cid', async (req, res) => {
     const cid = parseInt(req.params.cid)
-    // Llamar al método para obtener productos
-    const result = await cartManager.getProductsFromCart(cid)
+    
+    try {
+        const result = await cartManager.getProductsFromCart(cid)
+        res.status(200).json({ status: 'success', payload: result })
 
-    if (typeof result == 'string') {
-        const error = result.split(' ')
-        const errorMessage = error.slice(1).join(' ')
+    } catch (error) {
+        if (error.code in ERROR_CODES) {
+            res.status(ERROR_CODES[error.code]).json({ error: error.message })
 
-        return res.status(parseInt(error[0].slice(1,4))).json({ error: errorMessage })
+        } else {
+            res.status(500).json({ error: 'Internal Server Error' })
+        }
     }
-
-    res.status(200).json({ status: 'success', payload: result })
 })
 
-// Definición de la ruta para agregar un producto a un carrito específico
+
 cartsRouter.post("/:cid/product/:pid", async (req, res) => {
     const cid = parseInt(req.params.cid);
     const pid = parseInt(req.params.pid);
-    // Llamar al método para agregar un producto
-    const result = await cartManager.addProductToCart(cid, pid)
+    
+    try {
+        const result = await cartManager.addProductToCart(cid, pid)
+        res.status(200).json({ status: 'success', payload: result })
 
-    if (typeof result == 'string') {
-        const error = result.split(' ')
-        const errorMessage = error.slice(1).join(' ')
+    } catch (error) {
+        if (error.code in ERROR_CODES) {
+            res.status(ERROR_CODES[error.code]).json({ error: error.message })
 
-        return res.status(parseInt(error[0].slice(1,4))).json({ error: errorMessage })
+        } else {
+            res.status(500).json({ error: 'Internal Server Error' })
+        }
     }
-
-    res.status(200).json({ status: 'success', payload: result })
 })
 
 export default cartsRouter

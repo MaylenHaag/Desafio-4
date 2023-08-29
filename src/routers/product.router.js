@@ -1,88 +1,104 @@
 import { Router } from 'express'
 import ProductManager from '../ProductManager.js'
 
-// Creación de un enrutador utilizando Express
 const productRouter = Router()
-
 const productManager = new ProductManager('./data/products.json')
 
-//localhost:8080/products
-// Ruta GET para obtener todos los productos
+const ERROR_CODES = {
+    'product_not_found': 404, 
+    'invalid_data': 400
+}
+
 productRouter.get('/', async (req, res) => {
-    // Llamada asincrónica para obtener todos los productos
-    const result = await productManager.getProducts()
-    const limit = req.query.limit 
-    // Comprobación si la respuesta es una cadena (mensaje de error)
-    if (typeof result == 'string') {
-        // División del mensaje de error en código de estado y mensaje
-        const error = result.split(' ')
-        const errorMessage = error.slice(1).join(' ')
-        // Respondiendo con el código de estado y el mensaje de error en formato JSON
-        return res.status(parseInt(error[0].slice(1,4))).json({ error: errorMessage })
+    try {
+        const result = await productManager.getProducts()
+        const limit = req.query.limit 
+
+        res.status(200).json({ status: 'success', payload: result.slice(0, limit)})
+
+    } catch (error) {
+        if (error.code in ERROR_CODES) {
+            res.status(ERROR_CODES[error.code]).json({ error: error.message })
+
+        } else {
+            res.status(500).json({ error: 'Internal Server Error' })
+        }
     }
-    // Respondiendo con un código de estado 200 y una lista limitada de productos
-    res.status(200).json({ status: 'success', payload: result.slice(0, limit)})
 })
 
-//localhost:8080/products/:pid
-// Ruta GET para obtener un producto por su ID
 productRouter.get('/:pid', async (req, res) => {
     const pid = parseInt(req.params.pid);
-    // Llamada asincrónica para obtener un producto por su ID
-    const result = await productManager.getProductById(pid)
+    
+    try {
+        const result = await productManager.getProductById(pid)
+        res.status(200).json({ status: 'success', payload: result })
 
-    if (typeof result == 'string') {
-        const error = result.split(' ')
-        const errorMessage = error.slice(1).join(' ')
+    } catch (error) {
+        if (error.code in ERROR_CODES) {
+            return res.status(ERROR_CODES[error.code]).json({ error: error.message })
 
-        return res.status(parseInt(error[0].slice(1,4))).json({ error: errorMessage })
+        } else {
+            return res.status(500).json({ error: 'Internal Server Error' })
+        }
     }
-    // Respondiendo con un código de estado 200 y los detalles del producto
-    res.status(200).json({ status: 'success', payload: result })
 })
 
-// Ruta POST para agregar un nuevo producto
+
 productRouter.post('/', async (req, res) => {
-    // Obteniendo el producto desde el body
     const product = req.body
-    // Llamada asincrónica para agregar un producto
-    const result = await productManager.addProduct(product)
+    
+    try {
+        const result = await productManager.addProduct(product)
 
-    if (typeof result == 'string') {
-        const error = result.split(' ')
-        const errorMessage = error.slice(1).join(' ')
+        res.status(201).json({ status: 'success', payload: result })
 
-        return res.status(parseInt(error[0].slice(1,4))).json({ error: errorMessage })
+    } catch (error) {
+        if (error.code in ERROR_CODES) {
+            res.status(ERROR_CODES[error.code]).json({ error: error.message })
+
+        } else {
+            res.status(500).json({ error: 'Internal Server Error' })
+        }
     }
-    // Respondiendo con un código de estado 201 y los detalles del producto agregado
-    res.status(201).json({ status: 'success', payload: result })
 })
 
-// Ruta PUT para actualizar un producto por su ID
+
 productRouter.put('/:pid', async (req, res) => {
-    const pid = arseInt(req.params.pid)
-    // Obteniendo los datos de actualización desde el body
+    const pid = parseInt(req.params.pid)
     const data = req.body
-    // Llamada asincrónica para actualizar un producto
-    const result = await productManager.updateProduct(pid.data)
+    
+    try {
+        const result = await productManager.updateProduct(pid.data)
 
-    if (typeof result == "string") {
-        const error = result.split(" ");
-        const errorMessage = error.slice(1).join(' ')
+        res.status(201).json({ status: "success", payload: result })
 
-        return res.status(parseInt(error[0].slice(1,4))).json({ error: errorMessage })
+    } catch (error) {
+        if (error.code in ERROR_CODES) {
+            res.status(ERROR_CODES[error.code]).json({ error: error.message })
+
+        } else {
+            res.status(500).json({ error: 'Internal Server Error' })
+        }
     }
-    // Respondiendo con un código de estado 201 y los detalles del producto actualizado
-    return res.status(201).json({ status: "success", payload: result })
 })
 
-// Ruta DELETE para eliminar un producto por su ID
+
 productRouter.delete("/:pid", async (req, res) => {
     const pid = parseInt(req.params.pid);
-    // Llamada asincrónica para eliminar un producto
-    const result = await productManager.deleteProduct(pid);
-    // Respondiendo con un código de estado 201 y un mensaje de éxito
-    return res.status(201).json({ status: "success", payload: result })
+    
+    try {
+        const result = await productManager.deleteProduct(pid)
+
+        res.status(201).json({ status: "success", payload: result })
+
+    } catch (error) {
+        if (error.code in ERROR_CODES) {
+            res.status(ERROR_CODES[error.code]).json({ error: error.message })
+
+        } else {
+            res.status(500).json({ error: 'Internal Server Error' })
+        }
+    }
 })
 
 export default productRouter
