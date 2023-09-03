@@ -1,0 +1,41 @@
+<h1>Productos en tiempo real</h1>
+<hr />
+<form>
+    <div>Titulo: <input type="text" id="title"></div>
+    <div>Descripción: <input type="text" id="description"></div>
+    <div>Precio: <input type="number" id="price"></div>
+    <div>Código: <input type="text" id="code"></div>
+    <div>Stock: <input type="text" id="stock"></div>
+    <div>Categoría: <input type="text" id="category"></div>
+</form>
+<button>Crear Producto</button>
+<hr />
+<table>
+    <thead>
+        <tr>
+            <td></td>
+            <td><strong>Producto</strong></td>
+            <td><strong>Descripción</strong></td>
+            <td><strong>Precio</strong></td>
+            <td><strong>Código</strong></td>
+            <td><strong>Stock</strong></td>
+            <td><strong>Categoría</strong></td>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each products}}
+            <tr>
+                <td><button onclick="deleteProduct({{this.id}})">Eliminar</button></td>
+                <td>{{this.title}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.code}}</td>
+                <td>{{this.stock}}</td>
+                <td>{{this.category}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/index.js"></script>

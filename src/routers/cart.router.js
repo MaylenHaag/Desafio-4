@@ -6,8 +6,26 @@ const cartManager = new CartManager('./data/carts.json')
 
 const ERROR_CODES = {
     'code_already_exists': 409,
-    
 }
+
+cartsRouter.get("/", async (req, res) => {
+
+    try{
+        const result = await cartManager.getCarts()
+        const limit = req.query.limit
+
+        res.status(200).json({ status: 'success', payload: result })
+
+    } catch (error) {
+        
+        if (error.code in ERROR_CODES) {
+            res.status(ERROR_CODES[error.code].json({ error: error.message}))
+
+        } else {
+            res.status(500).json({ error: 'Internal Server Error' })
+        }
+    }
+})
 
 cartsRouter.post('/', async (req, res) => {
    
@@ -25,7 +43,6 @@ cartsRouter.post('/', async (req, res) => {
     }
 })
 
-
 cartsRouter.get('/:cid', async (req, res) => {
     const cid = parseInt(req.params.cid)
     
@@ -42,7 +59,6 @@ cartsRouter.get('/:cid', async (req, res) => {
         }
     }
 })
-
 
 cartsRouter.post("/:cid/product/:pid", async (req, res) => {
     const cid = parseInt(req.params.cid);

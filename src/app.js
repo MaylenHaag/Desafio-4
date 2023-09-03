@@ -1,38 +1,53 @@
 import fs from 'fs'
 import express from 'express'
-import productRouter from './routers/product.router.js'
+import { Server } from 'socket.io'
+import handlebars from 'express-handlebars'
+import productsRouter from './routers/product.router.js'
 import cartsRouter from './routers/cart.router.js'
-import ProductManager from './ProductManager.js'
+//import ProductManager from './productManager.js'
+import viewsRouter from './routers/view.router.js'
 
-// Ruta al archivo de datos
-const path = "./data/products.json"
+//const path = "./data/products.json"
 
-// Función de inicialización
+/*
 const init = async () => {
-    if (!fs.existsSync(path)) { // Si el archivo no existe
-      await fs.promises.writeFile(path, JSON.stringify([], null)); // Crear un archivo vacío
+    if (!fs.existsSync(path)) { 
+      await fs.promises.writeFile(path, JSON.stringify([], null)); 
     }
 }
+*/
 
-init()
+//init()
 
-const productManager = new ProductManager(path)
+//const productManager = new ProductManager(path)
 
-// Lectura e interpretación de los datos del archivo
-let data = await fs.promises.readFile(path, "utf-8") // Leer el archivo
-let products = JSON.parse(data) // Interpretar los datos como objetos JS
+/*
+let data = await fs.promises.readFile(path, "utf-8")
+let products = JSON.parse(data)
+*/
 
-// Crear una instancia de la aplicación Express
 const app = express()
 
-// Configuración de middleware y rutas
-app.use(express.json()) // Procesar JSON en las peticiones
-app.use('/', express.static('../public')) // Servir archivos estáticos desde la carpeta public
-app.use(express.urlencoded({extended: true})) // Procesar datos de formularios
+app.use(express.json()) 
+app.use(express.static('./src/public'))
+app.engine('handlebars', handlebars.engine())
+app.set('views', './src/views')
+app.set('view engine', 'handlebars')
+//app.use(express.urlencoded({extended: true}))
 
-// Asociar enrutadores a rutas base específicas
-app.use('/api/products', productRouter) // Usar el enrutador de productos en /api/products
-app.use('/api/carts', cartsRouter) // Usar el enrutador de carritos en /api/carts
+app.get('/', (req, res) => res.render('index'))
+app.use('/api/products', productsRouter)
+app.use('/api/carts', cartsRouter)
+app.use('/products', viewsRouter)
 
-// Iniciar el servidor en el puerto 8080
-app.listen(8080, () => console.log('Servicio cargado'))
+const server = app.listen(8080, () => console.log('Servicio cargado'))
+const io = new Server(server)
+
+io.on("connection", socket => {
+  console.log(`New client connected`)
+  socket.on('productList', data => {
+    io.emit('updatedProducts', data)
+  })
+})
+
+//const socketServer = new Server(httpServer)
