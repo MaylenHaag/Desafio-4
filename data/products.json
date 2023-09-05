@@ -141,5 +141,27 @@
     "description": "Aerosol mata moscas y mosquitos 370 ml",
     "status": true,
     "code": "EP011"
+  },
+  {
+    "id": 12,
+    "status": true,
+    "thumbnails": [],
+    "title": "serum",
+    "description": "maybelline",
+    "price": "6900",
+    "code": "19",
+    "stock": "2",
+    "category": "belleza"
+  },
+  {
+    "id": 13,
+    "status": true,
+    "thumbnails": [],
+    "title": "Mamadera",
+    "description": "Babelito",
+    "price": "3780",
+    "code": "28",
+    "stock": "4",
+    "category": "Bebes"
   }
 ]

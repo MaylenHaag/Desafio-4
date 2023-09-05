@@ -1,16 +1,17 @@
-<h1>Productos en tiempo real</h1>
+<h1 class="display-3 text-center">Productos en tiempo real</h1>
 <hr />
-<form>
-    <div>Titulo: <input type="text" id="title"></div>
-    <div>Descripción: <input type="text" id="description"></div>
-    <div>Precio: <input type="number" id="price"></div>
-    <div>Código: <input type="text" id="code"></div>
-    <div>Stock: <input type="text" id="stock"></div>
-    <div>Categoría: <input type="text" id="category"></div>
+<form type="onsubmit" id="createForm" class="container" style="width: 50%">
+    <div class="m-2 form-label">Titulo: <input type="text" class="form-control" id="title"></div>
+    <div class="m-2 form-label">Descripción: <input type="text" class="form-control" id="description"></div>
+    <div class="m-2 form-label">Precio: <input type="number" class="form-control" id="price"></div>
+    <div class="m-2 form-label">Código: <input type="text" class="form-control" id="code"></div>
+    <div class="m-2 form-label">Stock: <input type="text" class="form-control" id="stock"></div>
+    <div class="m-2 form-label">Categoría: <input type="text" class="form-control" id="category"></div>
 </form>
-<button>Crear Producto</button>
+<button type="submit" id="createBtn" class="btn btn-primary">Crear Producto</button>
 <hr />
-<table>
+<div class="container">
+    <table id="realProductsTable" class="table table-striped">
     <thead>
         <tr>
             <td></td>
@@ -22,10 +23,10 @@
             <td><strong>Categoría</strong></td>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="tbdodyProducts">
         {{#each products}}
             <tr>
-                <td><button onclick="deleteProduct({{this.id}})">Eliminar</button></td>
+                <td><button class="btn btn-danger" onclick="deleteProduct({{this.id}})">Eliminar</button></td>
                 <td>{{this.title}}</td>
                 <td>{{this.description}}</td>
                 <td>{{this.price}}</td>
@@ -36,6 +37,8 @@
         {{/each}}
     </tbody>
 </table>
+</div>
+
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="/index.js"></script>

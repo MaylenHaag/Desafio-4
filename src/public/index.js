@@ -20,7 +20,7 @@ document.getElementById('createBtn').addEventListener('click', async (e) => {
         method: 'post',
         body: JSON.stringify(body),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-type': 'application/json'
         }
     })
         .then(result => result.json())
@@ -95,7 +95,5 @@ socket.on('updatedProducts', (data) => {
                 <td>${product.stock}</td>
                 <td>${product.category}</td>
             `;
-
-        //table.getElementsByTagName('tbody')[0].appendChild(tr);
     }
 })
