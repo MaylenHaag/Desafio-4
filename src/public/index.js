@@ -1,5 +1,4 @@
 const socket = io()
-const table = document.getElementById('realProductsTable')
 
 document.getElementById('createBtn').addEventListener('click', async (e) => {
     
@@ -10,12 +9,13 @@ document.getElementById('createBtn').addEventListener('click', async (e) => {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
         price: document.getElementById('price').value,
+        thumbnail: ['sin imagen'],
         code: document.getElementById('code').value,
         stock: document.getElementById('stock').value,
         category: document.getElementById('category').value,
     }
 
-    await fetch('/api/products', {
+    fetch('/api/products', {
         
         method: 'post',
         body: JSON.stringify(body),
@@ -23,8 +23,8 @@ document.getElementById('createBtn').addEventListener('click', async (e) => {
             'Content-type': 'application/json'
         }
     })
-        .then(result => result.json())
-        .then(result => {
+        .then((result) => result.json())
+        .then((result) => {
 
             if (result.status === 'error') {
 
@@ -32,8 +32,8 @@ document.getElementById('createBtn').addEventListener('click', async (e) => {
             }
         })
         .then(() => fetch('/api/products'))
-        .then(result => result.json())
-        .then(result => {
+        .then((result) => result.json())
+        .then((result) => {
 
             if (result.status === 'error') {
 
@@ -51,35 +51,33 @@ document.getElementById('createBtn').addEventListener('click', async (e) => {
             document.getElementById('stock').value = ''
             document.getElementById('category').value = ''
         })
-        .catch(err => alert(`Ocurrió un error \n${err}`))
+        .catch((err) => alert(`Ocurrió un error \n${err}`))
 })
 
-deleteProduct = (id) => {
+deleteProduct = async (id) => {
 
-    fetch(`/api/products/${id}`, {
+    await fetch(`/api/products/${id}`, {
 
         method: 'delete',
     })
-        .then(result => result.json())
-        .then(result => {
+        .then((result) => result.json())
+        .then((result) => {
 
             if (result.status === 'error') {
 
-                throw alert("error!")
+                throw new Error(result.error)
             }
 
             socket.emit('productList', result.payload)
 
             alert(`Todo salió bien!! \nEl producto fue eliminado con éxito!`)
         })
-        .catch(err => alert(`Ocurrió un error \n${err}`))
+        .catch((err) => alert(`Ocurrió un error \n${err}`))
 }
 
 socket.on('updatedProducts', (data) => {
 
-    data = json.stringify(data)
-
-    table.innerHTML = ` `;
+    const tbodyProducts = document.getElementById('tbodyProducts')
 
     for (product of data) {
 
@@ -87,7 +85,7 @@ socket.on('updatedProducts', (data) => {
 
         tr.innerHTML = 
             `
-                <td><button onclick="deleteProduct(${product.id})">Eliminar</button></td>
+                <td><button class="btn btn-danger" onclick="deleteProduct(${product.id})">Eliminar</button></td>
                 <td>${product.title}</td>
                 <td>${product.description}</td>
                 <td>${product.price}</td>
@@ -95,5 +93,6 @@ socket.on('updatedProducts', (data) => {
                 <td>${product.stock}</td>
                 <td>${product.category}</td>
             `;
+            tbodyProducts.appendChild(tr)
     }
 })

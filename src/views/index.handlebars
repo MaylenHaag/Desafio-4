@@ -9,6 +9,7 @@
     <div class="m-2 form-label">Código: <input type="text" class="form-control" id="code"></div>
     <div class="m-2 form-label">Stock: <input type="text" class="form-control" id="stock"></div>
     <div class="m-2 form-label">Categoría: <input type="text" class="form-control" id="category"></div>
+
     <button type="submit" class="btn btn-primary" id="createBtn">Crear Producto</button>
 
   </form>
@@ -27,7 +28,7 @@
         <th>Categoría</th>
       </tr>
     </thead>
-    <tbody id="tbdodyProducts">
+    <tbody id="tbodyProducts">
       {{#each products}}
       <tr>
         <td><button class="btn btn-danger" onclick="deleteProduct({{this.id}})">Eliminar</button></td>

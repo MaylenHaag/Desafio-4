@@ -14,16 +14,16 @@
     <table id="realProductsTable" class="table table-striped">
     <thead>
         <tr>
-            <td></td>
-            <td><strong>Producto</strong></td>
-            <td><strong>Descripción</strong></td>
-            <td><strong>Precio</strong></td>
-            <td><strong>Código</strong></td>
-            <td><strong>Stock</strong></td>
-            <td><strong>Categoría</strong></td>
+            <th></th>
+            <th>Producto</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Código</th>
+            <th>Stock</th>
+            <th>Categoría</th>
         </tr>
     </thead>
-    <tbody id="tbdodyProducts">
+    <tbody id="tbodyProducts">
         {{#each products}}
             <tr>
                 <td><button class="btn btn-danger" onclick="deleteProduct({{this.id}})">Eliminar</button></td>

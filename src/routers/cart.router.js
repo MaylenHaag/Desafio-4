@@ -12,7 +12,6 @@ cartsRouter.get("/", async (req, res) => {
 
     try{
         const result = await cartManager.getCarts()
-        const limit = req.query.limit
 
         res.status(200).json({ status: 'success', payload: result })
 

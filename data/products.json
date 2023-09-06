@@ -152,16 +152,5 @@
     "code": "19",
     "stock": "2",
     "category": "belleza"
-  },
-  {
-    "id": 13,
-    "status": true,
-    "thumbnails": [],
-    "title": "Mamadera",
-    "description": "Babelito",
-    "price": "3780",
-    "code": "28",
-    "stock": "4",
-    "category": "Bebes"
   }
 ]

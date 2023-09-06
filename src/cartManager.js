@@ -22,6 +22,12 @@ export default class CartManager {
         return (data.length === 0) ? 1 : data[data.length - 1].id + 1
     }
 
+    async getCarts() {
+        let data = await fs.promises.readFile(this.#path, "utf-8")
+        let carts = JSON.parse(data)
+        return carts
+    }
+
     async createCart() {
         if (!fs.existsSync(this.#path)) {
             return 'El archivo no existe en la base de datos.'
