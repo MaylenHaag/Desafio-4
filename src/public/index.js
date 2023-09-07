@@ -79,6 +79,9 @@ socket.on('updatedProducts', (data) => {
 
     const tbodyProducts = document.getElementById('tbodyProducts')
 
+    // Limpio la tabla antes de actualizarla
+    tbodyProducts.innerHTML = '';
+
     for (product of data) {
 
         let tr = document.createElement('tr')
